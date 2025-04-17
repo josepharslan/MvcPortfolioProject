@@ -1,0 +1,54 @@
+﻿@model List<MvcPortfolioProject.Models.TblEducation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Eğitim Hayatım</h2>
+<br />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Okul Adı</th>
+            <th>Bölüm</th>
+            <th>Derece</th>
+            <th>Açıklama</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>Uyarı!</strong> Herhangi bir eğitim bilgisi bulunmamaktadır.
+            </div>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@item.SchoolName</td>
+                    <td>@item.Department</td>
+                    <td>@item.Degree</td>
+                    <td>@item.Description</td>
+                    <td>@item.StartDate.ToShortDateString()</td>
+                    <td>@(item.EndDate == null ? "Devam Ediyor." : item.EndDate.Value.ToShortDateString())</td>
+                    <td>
+                        <a href="/Education/DeleteEducation/@item.EducationId" class="btn btn-outline-danger">Sil</a>
+                        <a href="/Education/UpdateEducation/@item.EducationId" class="btn btn-outline-info">Güncelle</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Education/CreateEducation" class="btn btn-outline-success">Yeni Eğitim Ekle</a>

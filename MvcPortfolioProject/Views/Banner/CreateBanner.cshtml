@@ -1,0 +1,27 @@
+﻿@model MvcPortfolioProject.Models.TblBanner
+@{
+    ViewBag.Title = "Create Banner";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Banner Ekleme Sayfası</h2>
+<form method="post">
+    <div class="mb-4">
+        <label>Title</label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    </div>
+    <div class="mb-4">
+        <label>Description</label>
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    </div>
+    <div class="mb-4">
+        <label>Banner Görünsün mü?</label>
+        <span>Evet:</span>
+        @Html.RadioButtonFor(x => x.IsShown, "True", new { @class = "btn btn-secondary" })
+        <span>Hayır:</span>
+        @Html.RadioButtonFor(x => x.IsShown, "False", new { @class = "btn btn-secondary" })
+
+    </div>
+    <br />
+    <button class="btn btn-outline-primary">Banner Ekle</button>
+</form>

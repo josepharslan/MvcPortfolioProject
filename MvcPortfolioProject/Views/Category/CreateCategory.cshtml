@@ -1,0 +1,13 @@
+﻿@model MvcPortfolioProject.Models.TblCategory
+@{
+    ViewBag.Title = "CreateCategory";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Yeni Kategori Ekleme Sayfası</h2>
+<form method="post">
+    <label class="form-label">Kategori Adı</label>
+    <input type="text" name="Name" placeholder="Kategori Adı Giriniz..." class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Kaydet</button>
+</form>

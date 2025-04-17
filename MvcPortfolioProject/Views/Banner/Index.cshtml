@@ -1,0 +1,36 @@
+﻿@model List<MvcPortfolioProject.Models.TblBanner>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Banner Bilgileri</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Başlık</td>
+            <td>Açıklama</td>
+            <td>Görünür?</td>
+            <td>İşlemler</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BannerId</td>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.IsShown</td>
+                <td>
+                    <a href="/Banner/DeleteBanner/@item.BannerId" class="btn btn-outline-danger">Sil</a>
+                    <a href="/Banner/UpdateBanner/@item.BannerId" class="btn btn-outline-info">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Banner/CreateBanner" class="btn btn-outline-success">Yeni Banner Ekle</a>
