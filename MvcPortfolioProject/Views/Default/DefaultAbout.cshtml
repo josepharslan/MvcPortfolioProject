@@ -1,0 +1,41 @@
+﻿@model List<MvcPortfolioProject.Models.TblAbout>
+<section id="about" class="s-about target-section">
+
+    @foreach (var item in Model)
+    {
+        <div class="row about-info wide" data-animate-block>
+
+            <div class="column lg-6 md-12 about-info__pic-block ">
+                <img src="@item.ImageUrl"
+                     srcset="@item.ImageUrl 1x, @item.ImageUrl 2x" alt="" class="about-info__pic" style="opacity:75%" data-animate-el>
+            </div>
+
+            <div class="column lg-6 md-12">
+                <div class="about-info__text">
+
+                    <h2 class="text-pretitle with-line" data-animate-el>
+                        @item.Title
+                    </h2>
+                    <p class="attention-getter" data-animate-el>
+                        @item.Description
+                    </p>
+                    <a href="@item.CvUrl" class="btn btn--medium u-fullwidth" data-animate-el>CV'mi indir</a>
+
+                </div>
+            </div>
+        </div>
+    }
+
+    @Html.Action("DefaultExpertise", "Default")
+
+
+    <div class="row about-timelines" data-animate-block>
+
+        @Html.Action("DefaultExperience", "Default")
+
+        @Html.Action("DefaultEducation", "Default")
+
+
+    </div> <!-- end about-timelines -->
+
+</section>

@@ -1,0 +1,40 @@
+﻿@model List<MvcPortfolioProject.Models.TblProject>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Projelerim</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Proje Adı</th>
+            <th>Proje Açıklaması</th>
+            <th>Kategori</th>
+            <th>Github Url</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td><img src="@item.ImageUrl" style="width:50px; height:50px;" alt="Proje Görseli"/> @item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.TblCategory.Name</td>
+                <td><a href="@item.GithubUrl" class="btn btn-outline-light">Github Linki</a></td>
+                <td>
+                    <a href="/Project/DeleteProject/@item.ProjectId" class="btn btn-outline-danger">Sil</a>
+                    <a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-outline-info">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Project/CreateProject/" class="btn btn-outline-success">Yeni Proje Ekle</a>
